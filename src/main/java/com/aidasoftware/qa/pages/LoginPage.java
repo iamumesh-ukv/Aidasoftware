@@ -13,9 +13,8 @@ public class LoginPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-
 	//Objects
-	@FindBy(xpath="#//input[@id='txtEmailID']")
+	@FindBy(xpath="//input[@id='txtEmailID']")
 	WebElement emailAddressField;
 
 	@FindBy(xpath="//input[@id='txtPassword']")

@@ -18,7 +18,7 @@ public class BaseClass {
 	{
 
 		prop =new Properties();
-		File proFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\aiadasoftware\\qa\\config\\config.properties");
+		File proFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\aidasoftware\\qa\\config\\config.properties");
 
 		try
 		{
@@ -28,6 +28,19 @@ public class BaseClass {
 		catch(Throwable e)
 		{
 			e.printStackTrace();		
+		}
+
+		dataProp =new Properties();		
+		File dataProfile = new File(System.getProperty("user.dir") +"\\src\\main\\java\\com\\aidasoftware\\qa\\testdata\\testdata.properties");
+
+		try
+		{
+			FileInputStream datafis = new FileInputStream(dataProfile);
+			dataProp.load(datafis);
+		}
+		catch(Throwable e)
+		{
+			e.printStackTrace();
 		}
 	}
 
@@ -51,6 +64,8 @@ public class BaseClass {
 		driver.get(prop.getProperty("url"));
 		return driver;
 	}
+	
+	
 }
 
 

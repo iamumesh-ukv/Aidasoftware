@@ -1,0 +1,4 @@
+com\aidasoftware\qa\pages\HomePage.class
+com\aidasoftware\qa\utilities\ExtentReporter.class
+com\aidasoftware\qa\utilities\Utilities.class
+com\aidasoftware\qa\pages\LoginPage.class
