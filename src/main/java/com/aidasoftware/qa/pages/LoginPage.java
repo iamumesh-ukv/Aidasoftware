@@ -26,6 +26,34 @@ public class LoginPage {
 	@FindBy(xpath="//button[normalize-space()='Login']")
 	WebElement loginButton;
 
+	@FindBy(xpath="//span[@id='spnValidateEmail']()='Please enter Email Address'")
+	WebElement emailWarning;
+
+	@FindBy(xpath="//span[@id='spnValidatePassword']()='Please enter Password'")
+	WebElement passwordWarning;
+
+
+	public void emailAddressField(String emailText)
+	{
+		emailAddressField.sendKeys(emailText);
+	}
+	public void passwordField(String passwordText)
+	{
+		passwordField.sendKeys(passwordText);
+
+	}
+
+	public String retrieveEmailWarning()
+	{
+		String emaiWarningText = emailWarning.getText();
+		return emaiWarningText;
+	}
+	public String retrievepasswordWarning()
+	{
+		String passwordWarningText = passwordWarning.getText();
+		return passwordWarningText;
+	}
+
 	public LoginPage clickOnLoginButton()
 	{
 		loginButton.click();
@@ -38,7 +66,5 @@ public class LoginPage {
 		loginButton.click();
 		return new LoginPage(driver);
 	}
-
-
 
 }

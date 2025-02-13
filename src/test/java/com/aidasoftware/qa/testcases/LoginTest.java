@@ -1,6 +1,9 @@
 package com.aidasoftware.qa.testcases;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -52,6 +55,7 @@ public class LoginTest extends BaseClass {
 	public void verifyLoginWithInvalidCredentials()
 	{
 		loginPage.login(Utilities.generateEmailWithTimeStamp(), dataProp.getProperty("invalidPassword"));
+		Assert.assertTrue(loginPage.retrieveEmailWarning().contains(dataProp.getProperty("emailWarning")),"Email warning message is not displaying");
 	}
 
 	@Test(priority = 3)
@@ -72,6 +76,4 @@ public class LoginTest extends BaseClass {
 		//loginPage.login(prop.getProperty(" "), prop.getProperty(" "));
 		loginPage.clickOnLoginButton();
 	}
-
-
 }
