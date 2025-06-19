@@ -10,7 +10,6 @@ public class HomePage {
 
 
 	//Objects
-
 	@FindBy(xpath="//button[normalize-space()='Login']")
 	private WebElement loginOption; 
 
@@ -24,7 +23,6 @@ public class HomePage {
 	{
 		return new LoginPage(driver);
 	}
-
 
 	public LoginPage selectLoginOption()
 	{

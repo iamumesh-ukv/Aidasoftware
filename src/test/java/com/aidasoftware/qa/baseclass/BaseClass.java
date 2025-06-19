@@ -17,7 +17,7 @@ public class BaseClass {
 	public  BaseClass()
 	{
 
-		prop =new Properties();
+		prop = new Properties();
 		File proFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\aidasoftware\\qa\\config\\config.properties");
 
 		try
@@ -30,7 +30,7 @@ public class BaseClass {
 			e.printStackTrace();		
 		}
 
-		dataProp =new Properties();		
+		dataProp = new Properties();		
 		File dataProfile = new File(System.getProperty("user.dir") +"\\src\\main\\java\\com\\aidasoftware\\qa\\testdata\\testdata.properties");
 
 		try

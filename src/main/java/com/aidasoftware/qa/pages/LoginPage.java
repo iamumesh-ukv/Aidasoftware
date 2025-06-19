@@ -31,8 +31,20 @@ public class LoginPage {
 
 	@FindBy(xpath="//span[@id='spnValidatePassword']()='Please enter Password'")
 	WebElement passwordWarning;
+	
+	@FindBy(xpath="//div[@class='swal-text']")
+	//@FindBy(xpath="//span[@id='spnValidateEmail']")
+	WebElement emailPasswordNotMatchingWarning;
+	
+	@FindBy(xpath="//a[@class='showMenu'][normalize-space()='Orders']")
+	WebElement clickOnOrdersManu;
+	
+	@FindBy(xpath="//a[normalize-space()='Quotes']")
+	WebElement clickOnQuotePage;
 
-
+ 
+	//Action Method
+	
 	public void emailAddressField(String emailText)
 	{
 		emailAddressField.sendKeys(emailText);
@@ -53,7 +65,12 @@ public class LoginPage {
 		String passwordWarningText = passwordWarning.getText();
 		return passwordWarningText;
 	}
-
+public String retrieveEmailPasswordNotMatchingWarningMessageText() {
+		
+		String warningText = emailPasswordNotMatchingWarning.getText();
+		return warningText;
+		
+	}
 	public LoginPage clickOnLoginButton()
 	{
 		loginButton.click();
@@ -66,5 +83,11 @@ public class LoginPage {
 		loginButton.click();
 		return new LoginPage(driver);
 	}
-
+	
+	public QuotationPage navigateQuotationPage()
+	{
+		
+		clickOnOrdersManu.click();
+		return new QuotationPage(driver);
+	}
 }

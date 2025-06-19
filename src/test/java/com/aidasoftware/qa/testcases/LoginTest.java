@@ -1,7 +1,6 @@
 package com.aidasoftware.qa.testcases;
 
-import static org.testng.Assert.assertTrue;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -55,13 +54,23 @@ public class LoginTest extends BaseClass {
 	public void verifyLoginWithInvalidCredentials()
 	{
 		loginPage.login(Utilities.generateEmailWithTimeStamp(), dataProp.getProperty("invalidPassword"));
-		Assert.assertTrue(loginPage.retrieveEmailWarning().contains(dataProp.getProperty("emailWarning")),"Email warning message is not displaying");
+		//Assert.assertTrue(loginPage.retrieveEmailPasswordNotMatchingWarningMessageText().contains(dataProp.getProperty("emailPasswordNotMatchingWarning")),"Expected Warning message is not displayed");
+		
+		//System.out.println("Actual Warning Message: " + loginPage.retrieveEmailPasswordNotMatchingWarningMessageText());
+		//System.out.println("Expected Warning Message: " + dataProp.getProperty("emailPasswordNoMatchWarning"));
+		
+		String atualPasswordWarning = driver.findElement(By.xpath("//div[@class='swal-text']")).getText();
+		Assert.assertEquals(atualPasswordWarning, dataProp.getProperty("passwordWarning"),"Password warning is not displaying");
+
+
 	}
 
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidEmailAndValidPassword()
 	{
 		loginPage.login(dataProp.getProperty("invalidEmail"), prop.getProperty("ValidPassword"));
+	//	String atualPasswordWarning = driver.findElement(By.xpath("//span[@id='spnValidatePassword']")).getText();
+	//	Assert.assertEquals(atualPasswordWarning, dataProp.getProperty("passwordWarning"),"Password warning is not displaying");
 	}
 
 	@Test(priority = 4)
