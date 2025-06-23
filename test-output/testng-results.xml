@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="5" passed="4" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-21T00:58:14 IST" name="Suite" finished-at="2025-06-21T01:01:26 IST" duration-ms="191629">
+  <suite started-at="2025-06-23T16:01:10 IST" name="Suite" finished-at="2025-06-23T16:04:41 IST" duration-ms="210236">
     <groups>
     </groups>
-    <test started-at="2025-06-21T00:58:14 IST" name="Test" finished-at="2025-06-21T01:01:26 IST" duration-ms="191629">
+    <test started-at="2025-06-23T16:01:10 IST" name="Test" finished-at="2025-06-23T16:04:41 IST" duration-ms="210236">
       <class name="com.aidasoftware.qa.testcases.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T00:58:14 IST" name="setup" finished-at="2025-06-21T00:59:50 IST" duration-ms="96282" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:01:11 IST" name="setup" finished-at="2025-06-23T16:02:12 IST" duration-ms="60916" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithValidCredentials(java.lang.String,java.lang.String)[pri:1, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T00:59:50 IST" name="verifyLoginWithValidCredentials" data-provider="validCredentialsSupplier" finished-at="2025-06-21T00:59:53 IST" duration-ms="2757" status="PASS">
+        <test-method signature="verifyLoginWithValidCredentials(java.lang.String,java.lang.String)[pri:1, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:12 IST" name="verifyLoginWithValidCredentials" data-provider="validCredentialsSupplier" finished-at="2025-06-23T16:02:14 IST" duration-ms="1861" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -27,37 +27,37 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithValidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T00:59:53 IST" name="tearDown" finished-at="2025-06-21T01:00:13 IST" duration-ms="20050" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:14 IST" name="tearDown" finished-at="2025-06-23T16:02:19 IST" duration-ms="5596" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:13 IST" name="setup" finished-at="2025-06-21T01:00:30 IST" duration-ms="16332" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:19 IST" name="setup" finished-at="2025-06-23T16:02:39 IST" duration-ms="19110" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithInvalidCredentials()[pri:2, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:30 IST" name="verifyLoginWithInvalidCredentials" finished-at="2025-06-21T01:00:31 IST" duration-ms="1086" status="FAIL">
+        <test-method signature="verifyLoginWithInvalidCredentials()[pri:2, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:39 IST" name="verifyLoginWithInvalidCredentials" finished-at="2025-06-23T16:02:39 IST" duration-ms="861" status="FAIL">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
               <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='swal-text']"}
-  (Session info: chrome=137.0.7151.104)
+  (Session info: chrome=137.0.7151.120)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.27.0', revision: 'd6e718d134'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [448a4cae5d52d20f3c3e20b26bd31001, findElement {value=//div[@class='swal-text'], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61720}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61720/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 448a4cae5d52d20f3c3e20b26bd31001]]>
+Command: [d9d560ee62b133e4ce10dbce84facb79, findElement {using=xpath, value=//div[@class='swal-text']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.120, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51032}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51032/devtoo..., se:cdpVersion: 137.0.7151.120, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d9d560ee62b133e4ce10dbce84facb79]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='swal-text']"}
-  (Session info: chrome=137.0.7151.104)
+  (Session info: chrome=137.0.7151.120)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.27.0', revision: 'd6e718d134'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [448a4cae5d52d20f3c3e20b26bd31001, findElement {value=//div[@class='swal-text'], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61720}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61720/devtoo..., se:cdpVersion: 137.0.7151.104, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 448a4cae5d52d20f3c3e20b26bd31001
+Command: [d9d560ee62b133e4ce10dbce84facb79, findElement {using=xpath, value=//div[@class='swal-text']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.120, chrome: {chromedriverVersion: 137.0.7151.119 (e0ac9d12dff..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51032}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51032/devtoo..., se:cdpVersion: 137.0.7151.120, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d9d560ee62b133e4ce10dbce84facb79
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
@@ -105,43 +105,43 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithInvalidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:31 IST" name="tearDown" finished-at="2025-06-21T01:00:33 IST" duration-ms="2504" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:44 IST" name="tearDown" finished-at="2025-06-23T16:02:56 IST" duration-ms="12032" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:33 IST" name="setup" finished-at="2025-06-21T01:00:48 IST" duration-ms="15180" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:02:56 IST" name="setup" finished-at="2025-06-23T16:03:45 IST" duration-ms="48451" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithInvalidEmailAndValidPassword()[pri:3, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:48 IST" name="verifyLoginWithInvalidEmailAndValidPassword" finished-at="2025-06-21T01:00:49 IST" duration-ms="419" status="PASS">
+        <test-method signature="verifyLoginWithInvalidEmailAndValidPassword()[pri:3, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:03:45 IST" name="verifyLoginWithInvalidEmailAndValidPassword" finished-at="2025-06-23T16:03:54 IST" duration-ms="9558" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithInvalidEmailAndValidPassword -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:49 IST" name="tearDown" finished-at="2025-06-21T01:00:49 IST" duration-ms="320" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:03:54 IST" name="tearDown" finished-at="2025-06-23T16:04:02 IST" duration-ms="7658" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:00:49 IST" name="setup" finished-at="2025-06-21T01:01:02 IST" duration-ms="13412" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:02 IST" name="setup" finished-at="2025-06-23T16:04:25 IST" duration-ms="22900" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithValidEmailAndInvalidPassword()[pri:4, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:01:02 IST" name="verifyLoginWithValidEmailAndInvalidPassword" finished-at="2025-06-21T01:01:03 IST" duration-ms="535" status="PASS">
+        <test-method signature="verifyLoginWithValidEmailAndInvalidPassword()[pri:4, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:25 IST" name="verifyLoginWithValidEmailAndInvalidPassword" finished-at="2025-06-23T16:04:26 IST" duration-ms="574" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithValidEmailAndInvalidPassword -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:01:03 IST" name="tearDown" finished-at="2025-06-21T01:01:08 IST" duration-ms="5003" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:26 IST" name="tearDown" finished-at="2025-06-23T16:04:27 IST" duration-ms="941" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:01:08 IST" name="setup" finished-at="2025-06-21T01:01:23 IST" duration-ms="15176" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:27 IST" name="setup" finished-at="2025-06-23T16:04:40 IST" duration-ms="13023" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithoutProvidingCredentials()[pri:5, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:01:23 IST" name="verifyLoginWithoutProvidingCredentials" finished-at="2025-06-21T01:01:23 IST" duration-ms="248" status="PASS">
+        <test-method signature="verifyLoginWithoutProvidingCredentials()[pri:5, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:40 IST" name="verifyLoginWithoutProvidingCredentials" finished-at="2025-06-23T16:04:40 IST" duration-ms="164" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithoutProvidingCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-21T01:01:23 IST" name="tearDown" finished-at="2025-06-21T01:01:26 IST" duration-ms="2106" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.aidasoftware.qa.testcases.LoginTest@76a4ebf2]" started-at="2025-06-23T16:04:40 IST" name="tearDown" finished-at="2025-06-23T16:04:41 IST" duration-ms="899" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
