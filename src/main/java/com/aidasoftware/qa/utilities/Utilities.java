@@ -19,6 +19,7 @@ public class Utilities {
 
 	}
 
+	// Need to call this method from MyListeners page for apply screenshots method in project
 	public static String captureScreenshot(WebDriver driver,String testName)
 	{
 		File srcScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);

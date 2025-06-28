@@ -38,8 +38,8 @@ public class ExtentReporter {
 		
 		extentReport.setSystemInfo("Application URL", configProp.getProperty("url"));
 		extentReport.setSystemInfo("Browser Name", configProp.getProperty("browserName"));
-		extentReport.setSystemInfo("Email",configProp.getProperty("validEmail"));
-		extentReport.setSystemInfo("Password",configProp.getProperty("validPassword"));
+		extentReport.setSystemInfo("Email",configProp.getProperty("ValidEmail"));
+		extentReport.setSystemInfo("Password",configProp.getProperty("ValidPassword"));
 		extentReport.setSystemInfo("Operating System", System.getProperty("os.name"));
 		extentReport.setSystemInfo("User Name", System.getProperty("user.name"));
 		extentReport.setSystemInfo("Java Version",System.getProperty("java.version"));

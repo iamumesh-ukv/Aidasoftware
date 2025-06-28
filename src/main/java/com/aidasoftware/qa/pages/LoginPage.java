@@ -76,18 +76,25 @@ public String retrieveEmailPasswordNotMatchingWarningMessageText() {
 		loginButton.click();
 		return new LoginPage(driver);
 	}
-	public LoginPage login(String emailText, String passwordText)
+/*	public LoginPage login(String emailText, String passwordText)
 	{
 		emailAddressField.sendKeys(emailText);
 		passwordField.sendKeys(passwordText);
 		loginButton.click();
 		return new LoginPage(driver);
 	}
-	
+	*/
 	public QuotationPage navigateQuotationPage()
 	{
-		
 		clickOnOrdersManu.click();
 		return new QuotationPage(driver);
+	}
+	
+	public DashboardPage login(String emailText, String passwordText)
+	{
+		emailAddressField.sendKeys(emailText);
+		passwordField.sendKeys(passwordText);
+		loginButton.click();
+		return new DashboardPage(driver);
 	}
 }

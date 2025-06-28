@@ -63,9 +63,7 @@ public class BaseClass {
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		return driver;
-	}
-	
-	
+	}	
 }
 
 
