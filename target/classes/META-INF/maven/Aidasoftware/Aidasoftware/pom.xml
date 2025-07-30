@@ -50,7 +50,7 @@
     <version>5.1.1</version>
 </dependency>
 
-   <!--THIS DEPENDENCY FOR RUN THE PRJECT AS MAVEN TEST-->
+   <!--THIS DEPENDENCY FOR RUN THE PROJECT AS MAVEN TEST-->
 <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-gpg-plugin -->
 <dependency>
     <groupId>org.apache.maven.plugins</groupId>

@@ -8,64 +8,48 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-
 public class BaseClass {
 	WebDriver driver;
 	public Properties prop;
 	public Properties dataProp;
 
-	public  BaseClass()
-	{
+	public BaseClass() {
 
 		prop = new Properties();
-		File proFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\aidasoftware\\qa\\config\\config.properties");
+		File proFile = new File(
+				System.getProperty("user.dir") + "\\src\\main\\java\\com\\aidasoftware\\qa\\config\\config.properties");
 
-		try
-		{
+		try {
 			FileInputStream fis = new FileInputStream(proFile);
 			prop.load(fis);
-		}
-		catch(Throwable e)
-		{
-			e.printStackTrace();		
+		} catch (Throwable e) {
+			e.printStackTrace();
 		}
 
-		dataProp = new Properties();		
-		File dataProfile = new File(System.getProperty("user.dir") +"\\src\\main\\java\\com\\aidasoftware\\qa\\testdata\\testdata.properties");
+		dataProp = new Properties();
+		File dataProfile = new File(System.getProperty("user.dir")
+				+ "\\src\\main\\java\\com\\aidasoftware\\qa\\testdata\\testdata.properties");
 
-		try
-		{
+		try {
 			FileInputStream datafis = new FileInputStream(dataProfile);
 			dataProp.load(datafis);
-		}
-		catch(Throwable e)
-		{
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
 
-	public WebDriver initializeBrowserAndOpenApplicationURL(String BrowserName)
-	{
+	public WebDriver initializeBrowserAndOpenApplicationURL(String BrowserName) {
 
-		if(BrowserName.equalsIgnoreCase("chrome"))
-		{
+		if (BrowserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
-		}
-		else if(BrowserName.equalsIgnoreCase("firefox"))
-		{
+		} else if (BrowserName.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-		}
-		else if(BrowserName.equalsIgnoreCase("edge"))
-		{
+		} else if (BrowserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
 		}
 
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		return driver;
-	}	
+	}
 }
-
-
-
-
