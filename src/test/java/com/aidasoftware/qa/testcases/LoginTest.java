@@ -66,7 +66,7 @@ public class LoginTest extends BaseClass {
 
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidEmailAndValidPassword() {
-		loginPage.login(dataProp.getProperty("invalidEmail"), prop.getProperty("ValidPassword"));
+		loginPage.login(dataProp.getProperty("invalidEmail"), prop.getProperty("validEmail"));
 		// String atualPasswordWarning =
 		// driver.findElement(By.xpath("//span[@id='spnValidatePassword']")).getText();
 		// Assert.assertEquals(atualPasswordWarning,

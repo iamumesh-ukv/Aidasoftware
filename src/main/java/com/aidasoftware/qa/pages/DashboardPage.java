@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
+
 	WebDriver driver;
-	
 
 	// Objects
 	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
