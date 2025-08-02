@@ -5,8 +5,8 @@
     <classes>
       <class name="com.aidasoftware.qa.testcases.POSQuotationTest">
         <methods>
+          <include name="createPOSQuotationTest"/>
           <include name="setup"/>
-          <include name="tearDown"/>
           <include name="verifyPOSQuotationPageLoads"/>
         </methods>
       </class> <!-- com.aidasoftware.qa.testcases.POSQuotationTest -->

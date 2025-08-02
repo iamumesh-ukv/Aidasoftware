@@ -12,8 +12,10 @@ import com.aidasoftware.qa.pages.LoginPage;
 
 public class POSQuotationTest extends BaseClass {
 
-	POSQuotationPage posQuotationPage;
 	public WebDriver driver;
+	LoginPage loginPage;
+	DashboardPage dashboardPage;
+	POSQuotationPage posQuotationPage;
 
 	public POSQuotationTest() {
 		super();
@@ -32,7 +34,7 @@ public class POSQuotationTest extends BaseClass {
 		// posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void verifyPOSQuotationPageLoads() {
 		// posQuotationPage.clickOnPosQuoteButton();
 
@@ -42,6 +44,42 @@ public class POSQuotationTest extends BaseClass {
 			System.out.println("posQuotationPage is null. Navigation failed.");
 		}
 	}
+	  @Test(priority = 2)
+	    public void createPOSQuotationTest() {
+	       // posQuotationPage.clickAddQuote();
+
+	        // Select customer
+	        posQuotationPage.openCustomerDropdown();
+	        posQuotationPage.selectCustomerByName("AMAN");
+
+	        // Select Sales Type
+	        posQuotationPage.openSalesTypeDropdown();
+	        posQuotationPage.selectSalesTypeByVisibleText("Retail");
+
+	        // Select Delivery Date
+	        posQuotationPage.clickDeliveryDate();
+	        // Add custom method if you use JS or calendar picker to choose date
+
+	        // Add Item
+	        posQuotationPage.clickAddItem();
+	        posQuotationPage.openItemDropdown();
+	        posQuotationPage.selectItemByName("ITEM001");
+
+	        // Enter Quantity
+	        posQuotationPage.enterQuantity("5");
+
+	        // Select Work Type
+	        posQuotationPage.openWorkTypeDropdown();
+	        posQuotationPage.selectWorkTypeByVisibleText("Installation");
+
+	        // Click Save buttons
+	       // posQuotationPage.clickSave();
+	        posQuotationPage.clickSaveQuote();
+
+	        // Optionally generate sales order
+	        posQuotationPage.clickSubmitAndGenerateOrder();
+	    }
+
 //
 //	@AfterMethod
 //	public void tearDown() {
