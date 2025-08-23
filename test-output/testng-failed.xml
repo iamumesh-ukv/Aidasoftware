@@ -7,7 +7,6 @@
         <methods>
           <include name="createPOSQuotationTest"/>
           <include name="setup"/>
-          <include name="verifyPOSQuotationPageLoads"/>
         </methods>
       </class> <!-- com.aidasoftware.qa.testcases.POSQuotationTest -->
     </classes>

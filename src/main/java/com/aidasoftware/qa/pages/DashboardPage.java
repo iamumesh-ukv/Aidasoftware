@@ -40,5 +40,4 @@ public class DashboardPage {
 		System.out.println(POSQuotepage);
 		return new POSQuotationPage(driver);
 	}
-
 }

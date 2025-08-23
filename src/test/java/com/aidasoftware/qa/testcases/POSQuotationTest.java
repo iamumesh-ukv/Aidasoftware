@@ -24,64 +24,69 @@ public class POSQuotationTest extends BaseClass {
 	@BeforeMethod
 	public void setup() {
 		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browserName"));
-		// this peace of of code I added
-		LoginPage loginPage = new LoginPage(driver);
-		DashboardPage dashboardPage = loginPage.login(prop.getProperty("validEmail"),
-				prop.getProperty("validPassword"));
-		posQuotationPage = dashboardPage.navigateToPOSQuotationPage(); // Critical for test to work
-
-		// DashboardPage dashboardPage = new DashboardPage(driver);
-		// posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
+		/*
+		 * // this peace of of code I added LoginPage loginPage = new LoginPage(driver);
+		 * DashboardPage dashboardPage = loginPage.login(prop.getProperty("validEmail"),
+		 * prop.getProperty("validPassword")); posQuotationPage =
+		 * dashboardPage.navigateToPOSQuotationPage(); // Critical for test to work
+		 * 
+		 * // DashboardPage dashboardPage = new DashboardPage(driver); //
+		 * posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
+		 */
+		loginPage = new LoginPage(driver);
+		dashboardPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPassword"));
+		posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
 	}
+
+//	@Test(priority = 1)
+//	public void verifyPOSQuotationPageLoads() {
+//		// posQuotationPage.clickOnPosQuoteButton();
+//
+//		if (posQuotationPage != null) {
+//			posQuotationPage.clickOnPosQuoteButton();
+//		} else {
+//			System.out.println("posQuotationPage is null. Navigation failed.");
+//		}
+//	}
 
 	@Test(priority = 1)
-	public void verifyPOSQuotationPageLoads() {
-		// posQuotationPage.clickOnPosQuoteButton();
+	public void createPOSQuotationTest() {
+		posQuotationPage.clickOnPosQuoteButton();
 
-		if (posQuotationPage != null) {
-			posQuotationPage.clickOnPosQuoteButton();
-		} else {
-			System.out.println("posQuotationPage is null. Navigation failed.");
-		}
+		// Select customer
+		posQuotationPage.openCustomerDropdown();
+		posQuotationPage.selectCustomerByName("AMAN");
+
+		// Select Sales Type
+		posQuotationPage.openSalesTypeDropdown();
+		posQuotationPage.selectSalesTypeByVisibleText("Retail");
+
+		// Select Delivery Date
+		posQuotationPage.clickDeliveryDate();
+		// Add custom method if you use JS or calendar picker to choose date
+		posQuotationPage.selectDeliveryDate("25", "August", "2025");
+
+		// Add Item
+		posQuotationPage.clickAddItem();
+		posQuotationPage.openItemDropdown();
+		posQuotationPage.selectItemByName("101150 MNS Stock inventory item FD-1 LD-2");
+
+		// Enter Quantity
+		posQuotationPage.enterQuantity("21");
+
+		// Select Work Type
+		posQuotationPage.openWorkTypeDropdown();
+		posQuotationPage.selectWorkTypeByVisibleText("CARPET");
+
+		// Click Save buttons
+		// posQuotationPage.clickSave();
+		posQuotationPage.clickSaveQuote();
+
+		// Optionally generate sales order
+		posQuotationPage.clickSubmitAndGenerateOrder();
 	}
-	  @Test(priority = 2)
-	    public void createPOSQuotationTest() {
-	       // posQuotationPage.clickAddQuote();
 
-	        // Select customer
-	        posQuotationPage.openCustomerDropdown();
-	        posQuotationPage.selectCustomerByName("AMAN");
-
-	        // Select Sales Type
-	        posQuotationPage.openSalesTypeDropdown();
-	        posQuotationPage.selectSalesTypeByVisibleText("Retail");
-
-	        // Select Delivery Date
-	        posQuotationPage.clickDeliveryDate();
-	        // Add custom method if you use JS or calendar picker to choose date
-
-	        // Add Item
-	        posQuotationPage.clickAddItem();
-	        posQuotationPage.openItemDropdown();
-	        posQuotationPage.selectItemByName("ITEM001");
-
-	        // Enter Quantity
-	        posQuotationPage.enterQuantity("5");
-
-	        // Select Work Type
-	        posQuotationPage.openWorkTypeDropdown();
-	        posQuotationPage.selectWorkTypeByVisibleText("Installation");
-
-	        // Click Save buttons
-	       // posQuotationPage.clickSave();
-	        posQuotationPage.clickSaveQuote();
-
-	        // Optionally generate sales order
-	        posQuotationPage.clickSubmitAndGenerateOrder();
-	    }
-
-//
-//	@AfterMethod
+	// @AfterMethod
 //	public void tearDown() {
 //		driver.close();
 //	}
