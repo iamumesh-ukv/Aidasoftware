@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class POSQuotationPage {
 
 	WebDriver driver;
+	private WebDriverWait wait;
 
 	// Objects
 	@FindBy(xpath = "//span[normalize-space()='Add']")
@@ -38,6 +41,7 @@ public class POSQuotationPage {
 
 	@FindBy(xpath = "//div[contains(@class,'xdsoft_monthselect')]//div[contains(@class,'xdsoft_option')] ") // month
 																											// label
+
 	WebElement monthLabel;
 
 	@FindBy(xpath = "//div[contains(@class,'xdsoft_yearselect')]//div[contains(@class,'xdsoft_option')] ") // year label
@@ -76,6 +80,7 @@ public class POSQuotationPage {
 	// constructor to initialize the object on this page
 	public POSQuotationPage(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 	}
 
@@ -118,51 +123,79 @@ public class POSQuotationPage {
 	}
 
 	public void clickDeliveryDate() {
-		clickOnDeliveryDate.click();
+		// clickOnDeliveryDate.click();
 		// Use JSExecutor or sendKeys if needed for selecting date
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnDeliveryDate)).click();
 	}
 
 	public void selectDeliveryDate(String day, String month, String year) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 		// Step 1: Open the calendar
-		clickOnDeliveryDate.click();
+		WebElement deliveryDateInput = wait.until(ExpectedConditions.elementToBeClickable(clickOnDeliveryDate));
+		try {
+			deliveryDateInput.click();
+		} catch (ElementClickInterceptedException e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", deliveryDateInput);
+		}
 
 		// Step 2: Loop until the month & year are matched
 		while (true) {
-			String displayedMonth = monthLabel.getText().trim();
-			String displayedYear = yearLabel.getText().trim();
+		/*	String displayedMonth = monthLabel.getText().trim();
+		//	String displayedYear = yearLabel.getText().trim();
+			String displayedYear = yearLabel.getDomProperty("textContent").trim();
+			
+			//String displayedYear = yearLabel.getAttribute("textContent").trim(); */
+			
+			   WebElement monthElement = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_month']"));
+			    WebElement yearElement  = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_year']"));
+
+			    String displayedMonth = monthElement.getText().trim();
+			    String displayedYear  = yearElement.getText().trim();
+
 
 			if (displayedMonth.equalsIgnoreCase(month) && displayedYear.equals(year)) {
-				break; // found the correct month & year
+				break; // correct month & year found
 			}
 
-			// If year is greater, click next, else click previous
 			int targetYear = Integer.parseInt(year);
 			int currentYear = Integer.parseInt(displayedYear);
 
 			if (currentYear > targetYear || (currentYear == targetYear && !isMonthBefore(displayedMonth, month))) {
-				prevBtn.click();
+				prevBtn.click(); // go backwards
 			} else {
-				nextBtn.click();
+				nextBtn.click(); // go forwards
 			}
 		}
 
-		// Step 3: Select the date
-		WebElement dayElement = driver.findElement(
-				// By.xpath("//table//td[not(contains(@class,'ui-datepicker-other-month'))]/a[text()='"
-				// + day + "']"));
-				By.xpath(
-						"//div[contains(@class,'xdsoft_calendar')]//td[contains(@class,'xdsoft_date') and text()='\" + day + \"']\r\n"
-								+ ""));
-		dayElement.click();
+		// Step 3: Select the day dynamically
+		WebElement dayElement = wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//div[contains(@class,'xdsoft_calendar')]//td[contains(@class,'xdsoft_date') and text()='"
+						+ day + "']")));
+
+		try {
+			dayElement.click();
+		} catch (ElementClickInterceptedException e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", dayElement);
+		}
 	}
 
-	// Helper method: check if currentMonth comes before targetMonth
+	// Compare months case-insensitively
 	private boolean isMonthBefore(String currentMonth, String targetMonth) {
 		List<String> months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August",
 				"September", "October", "November", "December");
-		return months.indexOf(currentMonth) < months.indexOf(targetMonth);
+
+		int currentIndex = months.indexOf(normalizeMonth(currentMonth));
+		int targetIndex = months.indexOf(normalizeMonth(targetMonth));
+
+		return currentIndex < targetIndex;
+	}
+
+	// Normalize month name "august" or "AUGUST" "August"
+	private String normalizeMonth(String month) {
+		month = month.trim().toLowerCase();
+		return month.substring(0, 1).toUpperCase() + month.substring(1);
 	}
 
 	public void clickAddItem() {

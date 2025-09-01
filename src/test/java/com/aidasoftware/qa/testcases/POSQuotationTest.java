@@ -64,7 +64,7 @@ public class POSQuotationTest extends BaseClass {
 		// Select Delivery Date
 		posQuotationPage.clickDeliveryDate();
 		// Add custom method if you use JS or calendar picker to choose date
-		posQuotationPage.selectDeliveryDate("25", "August", "2025");
+		posQuotationPage.selectDeliveryDate("15", "October", "2025");
 
 		// Add Item
 		posQuotationPage.clickAddItem();
