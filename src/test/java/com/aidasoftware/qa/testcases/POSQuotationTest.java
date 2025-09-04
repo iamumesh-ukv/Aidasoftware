@@ -78,9 +78,11 @@ public class POSQuotationTest extends BaseClass {
 		posQuotationPage.openWorkTypeDropdown();
 		posQuotationPage.selectWorkTypeByVisibleText("CARPET");
 
-		// Click Save buttons
-		// posQuotationPage.clickSave();
-		posQuotationPage.clickSaveQuote();
+		 //Click Save buttons
+		 posQuotationPage.clickSave();
+		 
+		 //Click on Quote save button
+		//posQuotationPage.clickSaveQuote();
 
 		// Optionally generate sales order
 		posQuotationPage.clickSubmitAndGenerateOrder();

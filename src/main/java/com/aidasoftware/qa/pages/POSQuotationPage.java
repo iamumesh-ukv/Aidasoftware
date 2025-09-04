@@ -39,13 +39,11 @@ public class POSQuotationPage {
 	@FindBy(xpath = "//input[@id='txtInstallationDate']")
 	WebElement clickOnDeliveryDate;
 
-	@FindBy(xpath = "//div[contains(@class,'xdsoft_monthselect')]//div[contains(@class,'xdsoft_option')] ") // month
-																											// label
+	@FindBy(xpath = "//div[contains(@class,'xdsoft_monthselect')]//div[contains(@class,'xdsoft_option')]")
+	List<WebElement> monthLabels;
 
-	WebElement monthLabel;
-
-	@FindBy(xpath = "//div[contains(@class,'xdsoft_yearselect')]//div[contains(@class,'xdsoft_option')] ") // year label
-	WebElement yearLabel;
+	@FindBy(xpath = "//div[contains(@class,'xdsoft_yearselect')]//div[contains(@class,'xdsoft_option')]")
+	List<WebElement> yearLabels;
 
 	@FindBy(xpath = "//button[@class='xdsoft_next']") // Next button in calendar
 	WebElement nextBtn;
@@ -70,6 +68,9 @@ public class POSQuotationPage {
 
 	@FindBy(xpath = "//select[@id='ddlWorkTypeID']//option")
 	List<WebElement> workTypeOptions;
+
+	@FindBy(xpath = "//button[normalize-space()='Save']")
+	WebElement clickOnSaveButton;
 
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	WebElement clickOnSaveButtonToSaveQuote;
@@ -110,10 +111,14 @@ public class POSQuotationPage {
 	}
 
 	public void openSalesTypeDropdown() {
-		clickOnSalesTypeDropdown.click();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(clickOnSalesTypeDropdown));
+	    clickOnSalesTypeDropdown.click();
 	}
 
 	public void selectSalesTypeByVisibleText(String typeName) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfAllElements(salesTypeOptions));
 		for (WebElement type : salesTypeOptions) {
 			if (type.getText().trim().equalsIgnoreCase(typeName)) {
 				type.click();
@@ -129,73 +134,34 @@ public class POSQuotationPage {
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnDeliveryDate)).click();
 	}
 
-	public void selectDeliveryDate(String day, String month, String year) {
+	public void selectDeliveryDate(String date, String month, String year) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-		// Step 1: Open the calendar
-		WebElement deliveryDateInput = wait.until(ExpectedConditions.elementToBeClickable(clickOnDeliveryDate));
-		try {
-			deliveryDateInput.click();
-		} catch (ElementClickInterceptedException e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", deliveryDateInput);
-		}
+		// Wait until calendar is visible
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='xdsoft_calendar']")));
 
-		// Step 2: Loop until the month & year are matched
+		// Loop until desired month and year appear
 		while (true) {
-		/*	String displayedMonth = monthLabel.getText().trim();
-		//	String displayedYear = yearLabel.getText().trim();
-			String displayedYear = yearLabel.getDomProperty("textContent").trim();
-			
-			//String displayedYear = yearLabel.getAttribute("textContent").trim(); */
-			
-			   WebElement monthElement = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_month']"));
-			    WebElement yearElement  = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_year']"));
+			String currentMonth = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_month']")).getText();
+			String currentYear = driver.findElement(By.xpath("//div[@class='xdsoft_label xdsoft_year']")).getText();
 
-			    String displayedMonth = monthElement.getText().trim();
-			    String displayedYear  = yearElement.getText().trim();
-
-
-			if (displayedMonth.equalsIgnoreCase(month) && displayedYear.equals(year)) {
-				break; // correct month & year found
-			}
-
-			int targetYear = Integer.parseInt(year);
-			int currentYear = Integer.parseInt(displayedYear);
-
-			if (currentYear > targetYear || (currentYear == targetYear && !isMonthBefore(displayedMonth, month))) {
-				prevBtn.click(); // go backwards
+			if (currentMonth.equalsIgnoreCase(month) && currentYear.equals(year)) {
+				break;
 			} else {
-				nextBtn.click(); // go forwards
+				WebElement nextBtn = driver.findElement(By.xpath("//*[contains(@class,'xdsoft_next')]"));
+				nextBtn.click();
 			}
 		}
 
-		// Step 3: Select the day dynamically
-		WebElement dayElement = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[contains(@class,'xdsoft_calendar')]//td[contains(@class,'xdsoft_date') and text()='"
-						+ day + "']")));
-
-		try {
-			dayElement.click();
-		} catch (ElementClickInterceptedException e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", dayElement);
+		// Select the date from calendar
+		List<WebElement> allDates = driver
+				.findElements(By.xpath("//div[@class='xdsoft_calendar']//tbody//td[contains(@class,'xdsoft_date')]"));
+		for (WebElement dt : allDates) {
+			if (dt.getText().equals(date)) {
+				dt.click();
+				break;
+			}
 		}
-	}
-
-	// Compare months case-insensitively
-	private boolean isMonthBefore(String currentMonth, String targetMonth) {
-		List<String> months = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August",
-				"September", "October", "November", "December");
-
-		int currentIndex = months.indexOf(normalizeMonth(currentMonth));
-		int targetIndex = months.indexOf(normalizeMonth(targetMonth));
-
-		return currentIndex < targetIndex;
-	}
-
-	// Normalize month name "august" or "AUGUST" "August"
-	private String normalizeMonth(String month) {
-		month = month.trim().toLowerCase();
-		return month.substring(0, 1).toUpperCase() + month.substring(1);
 	}
 
 	public void clickAddItem() {
@@ -235,13 +201,13 @@ public class POSQuotationPage {
 		}
 	}
 
-//	public void clickSave() {
-//		clickOnSaveButton.click();
-//	}
-
-	public void clickSaveQuote() {
-		clickOnSaveButtonToSaveQuote.click();
+	public void clickSave() {
+		clickOnSaveButton.click();
 	}
+
+//	public void clickSaveQuote() {
+//		clickOnSaveButtonToSaveQuote.click();
+//	}
 
 	public void clickSubmitAndGenerateOrder() {
 		clickOnSubmitAndGenerateSalesOrderButton.click();

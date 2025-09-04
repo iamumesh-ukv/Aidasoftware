@@ -34,4 +34,43 @@ public class Utilities {
 		}
 		return destinationScreenshotPath;
 	}
+	
+	
+	/*
+	public static void selectDate(WebDriver driver,
+            By monthLocator, By yearLocator,
+            By nextButton, By prevButton,
+            String day, String month, String year) {
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+// Get displayed month/year
+String displayedMonth = wait.until(ExpectedConditions.visibilityOfElementLocated(monthLocator)).getText().trim();
+String displayedYear = wait.until(ExpectedConditions.visibilityOfElementLocated(yearLocator)).getText().trim();
+
+int targetYear = Integer.parseInt(year);
+int currentYear = Integer.parseInt(displayedYear);
+
+// Adjust year
+while (currentYear != targetYear) {
+if (currentYear < targetYear) {
+wait.until(ExpectedConditions.elementToBeClickable(nextButton)).click();
+} else {
+wait.until(ExpectedConditions.elementToBeClickable(prevButton)).click();
+}
+displayedYear = wait.until(ExpectedConditions.visibilityOfElementLocated(yearLocator)).getText().trim();
+currentYear = Integer.parseInt(displayedYear);
+}
+
+// Adjust month
+while (!displayedMonth.equalsIgnoreCase(month)) {
+wait.until(ExpectedConditions.elementToBeClickable(nextButton)).click();
+displayedMonth = wait.until(ExpectedConditions.visibilityOfElementLocated(monthLocator)).getText().trim();
+}
+
+// Select day
+By dayLocator = By.xpath("//td[not(contains(@class,'disabled'))]//*[normalize-space(text())='" + day + "']");
+WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(dayLocator));
+dateElement.click();
+}
+*/
 }

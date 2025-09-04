@@ -33,11 +33,11 @@ public class DashboardPage {
 
 		// Wait and click Point of Sale menu
 		wait.until(ExpectedConditions.elementToBeClickable(POSMainmanu)).click();
-		System.out.println(POSMainmanu);
+		//System.out.println(POSMainmanu);
 
 		// Wait and click Quote link
 		wait.until(ExpectedConditions.elementToBeClickable(POSQuotepage)).click();
-		System.out.println(POSQuotepage);
+		//System.out.println(POSQuotepage);
 		return new POSQuotationPage(driver);
 	}
 }
