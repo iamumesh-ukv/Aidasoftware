@@ -59,7 +59,7 @@ public class POSQuotationTest extends BaseClass {
 
 		// Select Sales Type
 		posQuotationPage.openSalesTypeDropdown();
-		posQuotationPage.selectSalesTypeByVisibleText("Retail");
+		posQuotationPage.selectSalesTypeByVisibleText("Regular");
 
 		// Select Delivery Date
 		posQuotationPage.clickDeliveryDate();
@@ -72,11 +72,14 @@ public class POSQuotationTest extends BaseClass {
 		posQuotationPage.selectItemByName("101150 MNS Stock inventory item FD-1 LD-2");
 
 		// Enter Quantity
-		posQuotationPage.enterQuantity("21");
+		posQuotationPage.enterQuantity("500");
 
 		// Select Work Type
 		posQuotationPage.openWorkTypeDropdown();
 		posQuotationPage.selectWorkTypeByVisibleText("CARPET");
+		
+		posQuotationPage.enterUnitCost("3.50");
+		posQuotationPage.enterUnitPrice("6.50");
 
 		 //Click Save buttons
 		 posQuotationPage.clickSave();
@@ -85,7 +88,9 @@ public class POSQuotationTest extends BaseClass {
 		//posQuotationPage.clickSaveQuote();
 
 		// Optionally generate sales order
-		posQuotationPage.clickSubmitAndGenerateOrder();
+		//posQuotationPage.clickSubmitAndGenerateOrder();
+		
+		//posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();
 	}
 
 	// @AfterMethod

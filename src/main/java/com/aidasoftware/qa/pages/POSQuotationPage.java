@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,14 +70,23 @@ public class POSQuotationPage {
 	@FindBy(xpath = "//select[@id='ddlWorkTypeID']//option")
 	List<WebElement> workTypeOptions;
 
+	@FindBy(xpath = "//input[@id='txtUnitCost']")
+	WebElement enterUnitCost;
+
+	@FindBy(xpath = "//input[@id='txtUnitPrice']")
+	WebElement enterUnitPrice;
+
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	WebElement clickOnSaveButton;
 
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	WebElement clickOnSaveButtonToSaveQuote;
 
-	@FindBy(xpath = "//div[@class='mt10']//input[@value='Save']")
+	@FindBy(xpath = "//div[@class='mt10']//input[@value='Submit & Generate Sales Order']")
 	WebElement clickOnSubmitAndGenerateSalesOrderButton;
+
+	@FindBy(xpath = "//button[@class='swal-button swal-button--confirm']")
+	WebElement clickOnQuoteConfirmationPopup;
 
 	// constructor to initialize the object on this page
 	public POSQuotationPage(WebDriver driver) {
@@ -111,9 +121,9 @@ public class POSQuotationPage {
 	}
 
 	public void openSalesTypeDropdown() {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(clickOnSalesTypeDropdown));
-	    clickOnSalesTypeDropdown.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnSalesTypeDropdown));
+		clickOnSalesTypeDropdown.click();
 	}
 
 	public void selectSalesTypeByVisibleText(String typeName) {
@@ -193,6 +203,8 @@ public class POSQuotationPage {
 	}
 
 	public void selectWorkTypeByVisibleText(String workType) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfAllElements(workTypeOptions));
 		for (WebElement option : workTypeOptions) {
 			if (option.getText().trim().equalsIgnoreCase(workType)) {
 				option.click();
@@ -201,15 +213,61 @@ public class POSQuotationPage {
 		}
 	}
 
+//	public void enterUnitCost(String unitcost) {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//
+//		// wait until element is visible and clickable
+//		wait.until(ExpectedConditions.visibilityOf(enterUnitCost));
+//		wait.until(ExpectedConditions.elementToBeClickable(enterUnitCost));
+//		//enterUnitCost.clear();
+//		enterUnitCost.sendKeys(unitcost);
+//	}
+
+	public void enterUnitCost(String unitCost) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		// Wait until element is visible and enabled
+		wait.until(ExpectedConditions.visibilityOf(enterUnitCost));
+		wait.until(ExpectedConditions.elementToBeClickable(enterUnitCost));
+
+		// Clear existing value properly (handles fields with default "0.00")
+		enterUnitCost.sendKeys(Keys.CONTROL + "a"); // select all
+		enterUnitCost.sendKeys(Keys.DELETE); // delete
+		enterUnitCost.sendKeys(unitCost); // type new value
+	}
+
+	public void enterUnitPrice(String unitprice) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		// wait until element is visible and clickable
+		wait.until(ExpectedConditions.visibilityOf(enterUnitPrice));
+		wait.until(ExpectedConditions.elementToBeClickable(enterUnitPrice));
+		// enterUnitPrice.clear();
+
+		// Clear existing value properly (handles fields with default "0.00")
+		enterUnitPrice.sendKeys(Keys.CONTROL + "a"); // select all
+		enterUnitPrice.sendKeys(Keys.DELETE); // delete
+		enterUnitPrice.sendKeys(unitprice); // type new value
+	
+	}
+
 	public void clickSave() {
-		clickOnSaveButton.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnSaveButton)).click();
+		// clickOnSaveButton.click();
 	}
 
 //	public void clickSaveQuote() {
 //		clickOnSaveButtonToSaveQuote.click();
 //	}
 
-	public void clickSubmitAndGenerateOrder() {
-		clickOnSubmitAndGenerateSalesOrderButton.click();
+//	public void clickSubmitAndGenerateOrder() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+//		wait.until(ExpectedConditions.elementToBeClickable(clickOnSubmitAndGenerateSalesOrderButton)).click();
+//		//clickOnSubmitAndGenerateSalesOrderButton.click();
+//	}
+
+	public void clickOnQouteCreateedSuccessfullyPopup() {
+		clickOnQuoteConfirmationPopup.click();
 	}
 }
