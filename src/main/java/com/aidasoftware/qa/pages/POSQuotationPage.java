@@ -88,6 +88,14 @@ public class POSQuotationPage {
 	@FindBy(xpath = "//button[@class='swal-button swal-button--confirm']")
 	WebElement clickOnQuoteConfirmationPopup;
 
+	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
+	WebElement clickOnPOSModule;
+	
+	@FindBy(xpath = "li[id='li_pointofsale'] li:nth-child(3) a:nth-child(1)\"")
+	WebElement clickOnPOSSalesOrderPage;
+	
+	
+
 	// constructor to initialize the object on this page
 	public POSQuotationPage(WebDriver driver) {
 		this.driver = driver;
@@ -248,7 +256,7 @@ public class POSQuotationPage {
 		enterUnitPrice.sendKeys(Keys.CONTROL + "a"); // select all
 		enterUnitPrice.sendKeys(Keys.DELETE); // delete
 		enterUnitPrice.sendKeys(unitprice); // type new value
-	
+
 	}
 
 	public void clickSave() {
@@ -261,13 +269,22 @@ public class POSQuotationPage {
 //		clickOnSaveButtonToSaveQuote.click();
 //	}
 
-//	public void clickSubmitAndGenerateOrder() {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-//		wait.until(ExpectedConditions.elementToBeClickable(clickOnSubmitAndGenerateSalesOrderButton)).click();
-//		//clickOnSubmitAndGenerateSalesOrderButton.click();
-//	}
+	public void clickSubmitAndGenerateOrder() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnSubmitAndGenerateSalesOrderButton)).click();
+		// clickOnSubmitAndGenerateSalesOrderButton.click();
+	}
 
 	public void clickOnQouteCreateedSuccessfullyPopup() {
 		clickOnQuoteConfirmationPopup.click();
+	}
+
+	public void clickOnPOSManu()
+	{
+		clickOnPOSModule.click();	
+	}
+	
+	public void clickOnPOSSalesOrderPage() {
+		clickOnPOSSalesOrderPage.click();
 	}
 }

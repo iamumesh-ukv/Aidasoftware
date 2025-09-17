@@ -50,7 +50,7 @@ public class POSQuotationTest extends BaseClass {
 //	}
 
 	@Test(priority = 1)
-	public void createPOSQuotationTest() {
+	public void createPOSQuotationTestWithMandatoryFields() {
 		posQuotationPage.clickOnPosQuoteButton();
 
 		// Select customer
@@ -77,20 +77,20 @@ public class POSQuotationTest extends BaseClass {
 		// Select Work Type
 		posQuotationPage.openWorkTypeDropdown();
 		posQuotationPage.selectWorkTypeByVisibleText("CARPET");
-		
+
 		posQuotationPage.enterUnitCost("3.50");
 		posQuotationPage.enterUnitPrice("6.50");
 
-		 //Click Save buttons
-		 posQuotationPage.clickSave();
-		 
-		 //Click on Quote save button
-		//posQuotationPage.clickSaveQuote();
+		// Click Save buttons
+		posQuotationPage.clickSave();
+
+		// Click on Quote save button
+		// posQuotationPage.clickSaveQuote();
 
 		// Optionally generate sales order
-		//posQuotationPage.clickSubmitAndGenerateOrder();
-		
-		//posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();
+		posQuotationPage.clickSubmitAndGenerateOrder();
+
+		// posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();
 	}
 
 	// @AfterMethod

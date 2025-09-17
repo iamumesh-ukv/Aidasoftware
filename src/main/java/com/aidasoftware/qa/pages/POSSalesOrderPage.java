@@ -1,17 +1,30 @@
 package com.aidasoftware.qa.pages;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class POSSalesOrderPage {
 
 	WebDriver driver;
+	public WebDriver wait;
 
 	// ===== Objects on Sales Order Page =====
+	
+	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
+	WebElement clickOnPointOfSaleManu;
+	
+	@FindBy(xpath = "//a[normalize-space()='Quote']")
+	WebElement clickOnPOSQuotepage;
+	
+	@FindBy(xpath="//tbody/tr[1]/td[7]/div[1]/a[2]/img[1]")
+	WebElement clickOnSalesOrderEditButton;
 
 	@FindBy(xpath = "//span[@id='select2-ddlCustomerID-container']")
 	WebElement customerDropdown;
@@ -32,7 +45,7 @@ public class POSSalesOrderPage {
 	List<WebElement> itemOptions;
 
 	@FindBy(xpath = "//input[@id='txtQty']")
-	WebElement quantityInput;
+	WebElement enterQuantity;
 
 	@FindBy(xpath = "//select[@id='ddlWorkTypeID']")
 	WebElement workTypeDropdown;
@@ -46,8 +59,8 @@ public class POSSalesOrderPage {
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	WebElement saveButton;
 
-	@FindBy(xpath = "//div[@class='mt10']//input[@value='Submit']")
-	WebElement submitButton;
+	@FindBy(xpath = "//div[@class='mt10 btnAlign']//input[@value='Update']")
+	WebElement updateButton;
 
 	// ===== Constructor =====
 	public POSSalesOrderPage(WebDriver driver) {
@@ -57,60 +70,75 @@ public class POSSalesOrderPage {
 
 	// ===== Action Methods =====
 
-	public void selectCustomer(String customerName) {
-		customerDropdown.click();
-		for (WebElement customer : customerOptions) {
-			if (customer.getText().trim().equalsIgnoreCase(customerName)) {
-				customer.click();
-				break;
-			}
-		}
+	public POSSalesOrderPage clickOnPOSManu()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnPointOfSaleManu)).click();
+		clickOnPointOfSaleManu.click();
+		return this;
+	}
+	public void clickOnPOSSalesOrderPage()
+	{
+		clickOnPOSQuotepage.click();
+	}
+	public void clickOnSalesOrderEditButton()
+	{
+		clickOnSalesOrderEditButton.click();
+	}
+//	public void selectCustomer(String customerName) {
+//		customerDropdown.click();
+//		for (WebElement customer : customerOptions) {
+//			if (customer.getText().trim().equalsIgnoreCase(customerName)) {
+//				customer.click();
+//				break;
+//			}
+//		}
+//	}
+//
+//	public void enterOrderDate(String date) {
+//		orderDateInput.clear();
+//		orderDateInput.sendKeys(date);
+//	}
+//
+//	public void clickAddItem() {
+//		addItemButton.click();
+//	}
+
+//	public void selectItem(String itemName) {
+//		itemDropdown.click();
+//		for (WebElement item : itemOptions) {
+//			if (item.getText().trim().equalsIgnoreCase(itemName)) {
+//				item.click();
+//				break;
+//			}
+//		}
+//	}
+
+	public void enterIssueQuantity(String issueQuantity) {
+		enterQuantity.clear();
+		enterQuantity.sendKeys(issueQuantity);
 	}
 
-	public void enterOrderDate(String date) {
-		orderDateInput.clear();
-		orderDateInput.sendKeys(date);
-	}
+//	public void selectWorkType(String workType) {
+//		for (WebElement option : workTypeOptions) {
+//			if (option.getText().trim().equalsIgnoreCase(workType)) {
+//				option.click();
+//				break;
+//			}
+//		}
+//	}
+//
+//	public void enterRemarks(String remarks) {
+//		remarksTextArea.clear();
+//		remarksTextArea.sendKeys(remarks);
+//	}
+//
+//	public void saveOrder() {
+//		saveButton.click();
+//	}
 
-	public void clickAddItem() {
-		addItemButton.click();
-	}
-
-	public void selectItem(String itemName) {
-		itemDropdown.click();
-		for (WebElement item : itemOptions) {
-			if (item.getText().trim().equalsIgnoreCase(itemName)) {
-				item.click();
-				break;
-			}
-		}
-	}
-
-	public void enterQuantity(String qty) {
-		quantityInput.clear();
-		quantityInput.sendKeys(qty);
-	}
-
-	public void selectWorkType(String workType) {
-		for (WebElement option : workTypeOptions) {
-			if (option.getText().trim().equalsIgnoreCase(workType)) {
-				option.click();
-				break;
-			}
-		}
-	}
-
-	public void enterRemarks(String remarks) {
-		remarksTextArea.clear();
-		remarksTextArea.sendKeys(remarks);
-	}
-
-	public void saveOrder() {
-		saveButton.click();
-	}
-
-	public void submitOrder() {
-		submitButton.click();
+	public void clickUpdateSalesOrderButton() {
+		updateButton.click();
 	}
 
 }
