@@ -2,7 +2,6 @@ package com.aidasoftware.qa.pages;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,17 +12,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class POSSalesOrderPage {
 
 	WebDriver driver;
-	public WebDriver wait;
+	private WebDriverWait wait;
 
 	// ===== Objects on Sales Order Page =====
 	
 	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
 	WebElement clickOnPointOfSaleManu;
 	
-	@FindBy(xpath = "//a[normalize-space()='Quote']")
-	WebElement clickOnPOSQuotepage;
+	@FindBy(xpath = "//a[@href='/POSSalesOrder/Manage']")
+	WebElement clickOnPOSSalesOrderPage;
 	
-	@FindBy(xpath="//tbody/tr[1]/td[7]/div[1]/a[2]/img[1]")
+	@FindBy(xpath="//img[contains(@src,'edit.png')]")
 	WebElement clickOnSalesOrderEditButton;
 
 	@FindBy(xpath = "//span[@id='select2-ddlCustomerID-container']")
@@ -61,10 +60,11 @@ public class POSSalesOrderPage {
 
 	@FindBy(xpath = "//div[@class='mt10 btnAlign']//input[@value='Update']")
 	WebElement updateButton;
-
+	
 	// ===== Constructor =====
 	public POSSalesOrderPage(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 	}
 
@@ -79,7 +79,7 @@ public class POSSalesOrderPage {
 	}
 	public void clickOnPOSSalesOrderPage()
 	{
-		clickOnPOSQuotepage.click();
+		clickOnPOSSalesOrderPage.click();
 	}
 	public void clickOnSalesOrderEditButton()
 	{
