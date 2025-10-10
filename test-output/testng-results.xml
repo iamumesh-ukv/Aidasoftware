@@ -2,38 +2,38 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-25T00:32:59 IST" name="Default suite" finished-at="2025-09-25T00:33:53 IST" duration-ms="54496">
+  <suite started-at="2025-10-10T18:41:44 IST" name="Default suite" finished-at="2025-10-10T18:42:38 IST" duration-ms="53469">
     <groups>
     </groups>
-    <test started-at="2025-09-25T00:32:59 IST" name="Default test" finished-at="2025-09-25T00:33:53 IST" duration-ms="54496">
+    <test started-at="2025-10-10T18:41:44 IST" name="Default test" finished-at="2025-10-10T18:42:38 IST" duration-ms="53469">
       <class name="com.aidasoftware.qa.testcases.POSSalesOrderTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.POSSalesOrderTest@4a003cbe]" started-at="2025-09-25T00:32:59 IST" name="setup" finished-at="2025-09-25T00:33:53 IST" duration-ms="54102" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.aidasoftware.qa.testcases.POSSalesOrderTest@4a003cbe]" started-at="2025-10-10T18:41:45 IST" name="setup" finished-at="2025-10-10T18:42:37 IST" duration-ms="52825" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="createSalesOrderTestWithMandatoryFields()[pri:1, instance:com.aidasoftware.qa.testcases.POSSalesOrderTest@4a003cbe]" started-at="2025-09-25T00:33:53 IST" name="createSalesOrderTestWithMandatoryFields" finished-at="2025-09-25T00:33:53 IST" duration-ms="279" status="FAIL">
+        <test-method signature="createSalesOrderTestWithMandatoryFields()[pri:1, instance:com.aidasoftware.qa.testcases.POSSalesOrderTest@4a003cbe]" started-at="2025-10-10T18:42:37 IST" name="createSalesOrderTestWithMandatoryFields" finished-at="2025-10-10T18:42:38 IST" duration-ms="547" status="FAIL">
           <exception class="org.openqa.selenium.ElementNotInteractableException">
             <message>
               <![CDATA[element not interactable
-  (Session info: chrome=140.0.7339.186)
+  (Session info: chrome=140.0.7339.208)
 Build info: version: '4.30.0', revision: '509c7f1'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [1df2e2cc75ea00d19edbc2da5e9793b9, clickElement {id=f.A651A255EC4FC4B7EA6BD73DB79ADC0B.d.C51D5496B69D7FBF0BBEF171FDA041BF.e.111}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55325}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55325/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (1df2e2cc75ea00d19edbc2da5e9793b9)] -> xpath: //a[@href='/POSSalesOrder/Manage']]
-Session ID: 1df2e2cc75ea00d19edbc2da5e9793b9]]>
+Command: [a292135c3e56c89eb8e332b42191f48f, clickElement {id=f.BDAD29FE4A0A716B4EB76877D689826D.d.E207E36832367A0F6ED3110D826607CD.e.123}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.208, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51770}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51770/devtoo..., se:cdpVersion: 140.0.7339.208, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (a292135c3e56c89eb8e332b42191f48f)] -> xpath: //a[@href='/POSSalesOrder/Manage']]
+Session ID: a292135c3e56c89eb8e332b42191f48f]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.ElementNotInteractableException: element not interactable
-  (Session info: chrome=140.0.7339.186)
+  (Session info: chrome=140.0.7339.208)
 Build info: version: '4.30.0', revision: '509c7f1'
 System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [1df2e2cc75ea00d19edbc2da5e9793b9, clickElement {id=f.A651A255EC4FC4B7EA6BD73DB79ADC0B.d.C51D5496B69D7FBF0BBEF171FDA041BF.e.111}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55325}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55325/devtoo..., se:cdpVersion: 140.0.7339.186, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (1df2e2cc75ea00d19edbc2da5e9793b9)] -> xpath: //a[@href='/POSSalesOrder/Manage']]
-Session ID: 1df2e2cc75ea00d19edbc2da5e9793b9
+Command: [a292135c3e56c89eb8e332b42191f48f, clickElement {id=f.BDAD29FE4A0A716B4EB76877D689826D.d.E207E36832367A0F6ED3110D826607CD.e.123}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.208, chrome: {chromedriverVersion: 140.0.7339.207 (17230b545fd..., userDataDir: C:\Users\umesh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51770}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51770/devtoo..., se:cdpVersion: 140.0.7339.208, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (a292135c3e56c89eb8e332b42191f48f)] -> xpath: //a[@href='/POSSalesOrder/Manage']]
+Session ID: a292135c3e56c89eb8e332b42191f48f
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
@@ -50,7 +50,7 @@ at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethod
 at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
 at jdk.proxy2/jdk.proxy2.$Proxy11.click(Unknown Source)
-at com.aidasoftware.qa.pages.POSSalesOrderPage.clickOnPOSSalesOrderPage(POSSalesOrderPage.java:81)
+at com.aidasoftware.qa.pages.POSSalesOrderPage.clickOnPOSSalesOrderPage(POSSalesOrderPage.java:82)
 at com.aidasoftware.qa.testcases.POSSalesOrderTest.createSalesOrderTestWithMandatoryFields(POSSalesOrderTest.java:36)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 at java.base/java.lang.reflect.Method.invoke(Method.java:577)
