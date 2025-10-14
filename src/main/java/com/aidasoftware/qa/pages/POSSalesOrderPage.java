@@ -15,14 +15,14 @@ public class POSSalesOrderPage {
 	private WebDriverWait wait;
 
 	// ===== Objects on Sales Order Page =====
-	
+
 	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
 	WebElement clickOnPointOfSaleManu;
-	
+
 	@FindBy(xpath = "//a[@href='/POSSalesOrder/Manage']")
 	WebElement clickOnPOSSalesOrderPage;
-	
-	@FindBy(xpath="//img[contains(@src,'edit.png')]")
+
+	@FindBy(xpath = "//img[contains(@src,'edit.png')]")
 	WebElement clickOnSalesOrderEditButton;
 
 	@FindBy(xpath = "//span[@id='select2-ddlCustomerID-container']")
@@ -60,7 +60,7 @@ public class POSSalesOrderPage {
 
 	@FindBy(xpath = "//div[@class='mt10 btnAlign']//input[@value='Update']")
 	WebElement updateButton;
-	
+
 	// ===== Constructor =====
 	public POSSalesOrderPage(WebDriver driver) {
 		this.driver = driver;
@@ -70,20 +70,23 @@ public class POSSalesOrderPage {
 
 	// ===== Action Methods =====
 
-	public POSSalesOrderPage clickOnPOSManu()
-	{
+	public POSSalesOrderPage clickOnPOSManu() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnPointOfSaleManu)).click();
 		clickOnPointOfSaleManu.click();
 		return this;
 	}
-	public void clickOnPOSSalesOrderPage()
-	{
-		clickOnPOSSalesOrderPage.click();
+
+	public void clickOnPOSSalesOrderPage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnPOSSalesOrderPage)).click();
+		// clickOnPOSSalesOrderPage.click();
 	}
-	public void clickOnSalesOrderEditButton()
-	{
-		clickOnSalesOrderEditButton.click();
+
+	public void clickOnSalesOrderEditButton() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3000));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnSalesOrderEditButton)).click();
+		// clickOnSalesOrderEditButton.click();
 	}
 //	public void selectCustomer(String customerName) {
 //		customerDropdown.click();
@@ -115,7 +118,9 @@ public class POSSalesOrderPage {
 //	}
 
 	public void enterIssueQuantity(String issueQuantity) {
-		enterQuantity.clear();
+		new WebDriverWait(driver, Duration.ofSeconds(2000)).until(ExpectedConditions.visibilityOf(enterQuantity))
+				.clear();
+		// enterQuantity.clear();
 		enterQuantity.sendKeys(issueQuantity);
 	}
 

@@ -89,8 +89,7 @@ public class POSQuotationTest extends BaseClass {
 
 		// Optionally generate sales order
 		posQuotationPage.clickSubmitAndGenerateOrder();
-
-		// posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();
+		posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();
 	}
 
 	// @AfterMethod

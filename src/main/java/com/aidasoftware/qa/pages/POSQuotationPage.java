@@ -85,7 +85,7 @@ public class POSQuotationPage {
 	@FindBy(xpath = "//div[@class='mt10']//input[@value='Submit & Generate Sales Order']")
 	WebElement clickOnSubmitAndGenerateSalesOrderButton;
 
-	@FindBy(xpath = "//button[@class='swal-button swal-button--confirm']")
+	@FindBy(xpath = "//span[@id='btnSalesOrderClose']")
 	WebElement clickOnQuoteConfirmationPopup;
 
 	@FindBy(xpath = "//a[@class='showMenu' and contains(., 'Point of Sale')]")
