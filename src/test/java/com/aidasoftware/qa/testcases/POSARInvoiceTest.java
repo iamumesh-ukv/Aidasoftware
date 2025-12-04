@@ -3,7 +3,6 @@ package com.aidasoftware.qa.testcases;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.aidasoftware.qa.baseclass.BaseClass;
 import com.aidasoftware.qa.pages.DashboardPage;
 import com.aidasoftware.qa.pages.LoginPage;
@@ -27,6 +26,11 @@ public class POSARInvoiceTest extends BaseClass {
 
 	@Test(priority = 1)
 	public void createPOSARInvoiceTestWithMandatoryFields() {
+		posARInvoicePage.clickOnPOSInvoiceIcon();
+		posARInvoicePage.openCashAccontDropdown();
+		posARInvoicePage.selectCashAccount("10000-Petty Cash-Corporate-Portland-Corporate-Corporate");
+		posARInvoicePage.openPaymentDropdown();
+		posARInvoicePage.selectPaymentByType("Cash");
 
 	}
 

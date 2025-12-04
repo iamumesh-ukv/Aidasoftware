@@ -6,13 +6,24 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.aidasoftware.qa.testcases.LoginTest">
+      <class name="com.aidasoftware.qa.testcases.POSSalesOrderTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="verifyLoginWithInvalidCredentials"/>
+          <include name="createSalesOrderTestWithMandatoryFields"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- com.aidasoftware.qa.testcases.LoginTest -->
+      </class> <!-- com.aidasoftware.qa.testcases.POSSalesOrderTest -->
+      <class name="com.aidasoftware.qa.testcases.POSARInvoiceTest">
+        <methods>
+          <include name="setup"/>
+          <include name="createPOSARInvoiceTestWithMandatoryFields"/>
+        </methods>
+      </class> <!-- com.aidasoftware.qa.testcases.POSARInvoiceTest -->
+      <class name="com.aidasoftware.qa.testcases.POSQuotationTest">
+        <methods>
+          <include name="createPOSQuotationTestWithMandatoryFields"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.aidasoftware.qa.testcases.POSQuotationTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
