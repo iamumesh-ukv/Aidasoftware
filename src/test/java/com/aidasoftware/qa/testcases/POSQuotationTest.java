@@ -24,15 +24,7 @@ public class POSQuotationTest extends BaseClass {
 	@BeforeMethod
 	public void setup() {
 		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browserName"));
-		/*
-		 * // this peace of of code I added LoginPage loginPage = new LoginPage(driver);
-		 * DashboardPage dashboardPage = loginPage.login(prop.getProperty("validEmail"),
-		 * prop.getProperty("validPassword")); posQuotationPage =
-		 * dashboardPage.navigateToPOSQuotationPage(); // Critical for test to work
-		 * 
-		 * // DashboardPage dashboardPage = new DashboardPage(driver); //
-		 * posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
-		 */
+	
 		loginPage = new LoginPage(driver);
 		dashboardPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPassword"));
 		posQuotationPage = dashboardPage.navigateToPOSQuotationPage();
@@ -64,7 +56,7 @@ public class POSQuotationTest extends BaseClass {
 		// Select Delivery Date
 		posQuotationPage.clickDeliveryDate();
 		// Add custom method if you use JS or calendar picker to choose date
-		posQuotationPage.selectDeliveryDate("25", "December", "2025");
+		posQuotationPage.selectDeliveryDate("25", "March", "2026");
 
 		// Add Item
 		posQuotationPage.clickAddItem();
@@ -86,7 +78,6 @@ public class POSQuotationTest extends BaseClass {
 
 		// Click on Quote save button
 		// posQuotationPage.clickSaveQuote();
-
 		// Optionally generate sales order
 		posQuotationPage.clickSubmitAndGenerateOrder();
 		posQuotationPage.clickOnQouteCreateedSuccessfullyPopup();

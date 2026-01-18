@@ -15,7 +15,7 @@ public class POSSalesOrderTest extends BaseClass {
 	public WebDriver driver;
 	LoginPage loginPage;
 	DashboardPage dashboardPage;
-	POSSalesOrderPage salesOrderPage;
+	POSSalesOrderPage possalesOrderPage;
 
 	public POSSalesOrderTest() {
 		super();
@@ -27,26 +27,26 @@ public class POSSalesOrderTest extends BaseClass {
 		loginPage = new LoginPage(driver);
 		dashboardPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPassword"));
 		// Navigate to Sales Order page (you need to add a navigation method in DashboardPage)
-		 salesOrderPage = dashboardPage.navigateToPOSSalesOrderPage();
+		possalesOrderPage = dashboardPage.navigateToPOSSalesOrderPage();
 	}
 
 	@Test(priority = 1)
-	public void createSalesOrderTestWithMandatoryFields() {
-		salesOrderPage.clickOnPOSManu();
-		salesOrderPage.clickOnPOSSalesOrderPage();
+	public void createPOSSalesOrderTestWithMandatoryFields() {
+		possalesOrderPage.clickOnPOSManu();
+		possalesOrderPage.clickOnPOSSalesOrderPage();
 		
-		salesOrderPage.clickOnSalesOrderEditButton();
+		possalesOrderPage.clickOnSalesOrderEditButton();
 //		salesOrderPage.selectCustomer("AMAN");
 //		salesOrderPage.enterOrderDate("25-08-2025");;
 //
 //		salesOrderPage.clickAddItem();
 //		salesOrderPage.selectItem("ITEM001");
-		salesOrderPage.enterIssueQuantity("500");
+		possalesOrderPage.enterIssueQuantity("500");
 //		salesOrderPage.selectWorkType("Installation");
 //
 //		salesOrderPage.enterRemarks("Urgent Order");
 //		salesOrderPage.saveOrder();
-		salesOrderPage.clickUpdateSalesOrderButton();
+		possalesOrderPage.clickUpdateSalesOrderButton();
 	}
 
 //	@AfterMethod

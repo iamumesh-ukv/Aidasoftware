@@ -2,6 +2,8 @@ package com.aidasoftware.qa.pages;
 
 import java.time.Duration;
 import java.util.List;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -118,12 +120,22 @@ public class POSSalesOrderPage {
 //	}
 
 	public void enterIssueQuantity(String issueQuantity) {
-		new WebDriverWait(driver, Duration.ofSeconds(2000)).until(ExpectedConditions.visibilityOf(enterQuantity))
-				.clear();
-		// enterQuantity.clear();
-		enterQuantity.sendKeys(issueQuantity);
-	}
 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+	    // Wait until element is visible
+	    WebElement element = wait.until(
+	            ExpectedConditions.visibilityOf(enterQuantity)
+	    );
+
+	    // Scroll element into view
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", element  );
+
+	    // Clear and enter value
+	    element.clear();
+	    element.sendKeys(issueQuantity);
+	}
 //	public void selectWorkType(String workType) {
 //		for (WebElement option : workTypeOptions) {
 //			if (option.getText().trim().equalsIgnoreCase(workType)) {

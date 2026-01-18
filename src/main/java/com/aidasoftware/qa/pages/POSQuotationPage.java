@@ -275,10 +275,6 @@ public class POSQuotationPage {
 		// clickOnSubmitAndGenerateSalesOrderButton.click();
 	}
 
-	public void clickOnQouteCreateedSuccessfullyPopup() {
-		clickOnQuoteConfirmationPopup.click();
-	}
-
 	public void clickOnPOSManu()
 	{
 		clickOnPOSModule.click();	
@@ -286,5 +282,8 @@ public class POSQuotationPage {
 	
 	public void clickOnPOSSalesOrderPage() {
 		clickOnPOSSalesOrderPage.click();
+	}
+	public void clickOnQouteCreateedSuccessfullyPopup() {
+		clickOnQuoteConfirmationPopup.click();
 	}
 }

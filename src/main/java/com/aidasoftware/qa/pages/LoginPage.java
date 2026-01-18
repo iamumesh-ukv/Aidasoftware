@@ -1,9 +1,13 @@
 package com.aidasoftware.qa.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 	WebDriver driver;
@@ -14,35 +18,68 @@ public class LoginPage {
 	}
 
 	// Objects
-	@FindBy(xpath ="//input[@id='txtEmailID']")
+	@FindBy(xpath = "//input[@id='txtEmailID']")
 	WebElement emailAddressField;
 
-	@FindBy(xpath ="//input[@id='txtPassword']")
+	@FindBy(xpath = "//input[@id='txtPassword']")
 	WebElement passwordField;
 
-	@FindBy(xpath ="//input[@id='chkRememberMe']")
+	@FindBy(xpath = "//input[@id='chkRememberMe']")
 	WebElement rememberCheckBox;
 
-	@FindBy(xpath ="//button[normalize-space()='Login']")
+	@FindBy(xpath = "//button[normalize-space()='Login']")
 	WebElement loginButton;
+	@FindBy(xpath = "//h1[normalize-space()='Dashboard']")
+	WebElement successmessageText;
 
-	@FindBy(xpath = "//span[@id='spnValidateEmail']()='Please enter Email Address'")
+	@FindBy(xpath ="//span[contains(text(),'Please enter Email Address')]")
 	WebElement emailWarning;
 
-	@FindBy(xpath = "//span[@id='spnValidatePassword']()='Please enter Password'")
+	@FindBy(xpath = "//span[contains(text(),'Please enter Password')]")
 	WebElement passwordWarning;
 
 	@FindBy(xpath = "//div[@class='swal-text']")
-	// @FindBy(xpath="//span[@id='spnValidateEmail']")
 	WebElement emailPasswordNotMatchingWarning;
 
 	@FindBy(xpath = "//a[@class='showMenu'][normalize-space()='Orders']")
 	WebElement clickOnOrdersManu;
 
 	@FindBy(xpath = "//a[normalize-space()='Quotes']")
-	WebElement clickOnQuotePage;
+	WebElement clickOnQuotePage;  
+	
+	               // Action Method
 
-	// Action Method
+	// Generic reusable method (ONLY ONCE)
+	public String getWarningText(WebElement element) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+			wait.until(ExpectedConditions.visibilityOf(element));
+			return element.isDisplayed() ? element.getText().trim() : "";
+		} catch (Exception e) {
+			System.out.println("Warning not displayed: " + element);
+			return "";
+		}
+	}
+
+	public String successMessageGetText() {
+		return successmessageText.getText();
+	}
+
+	public String retrieveEmailWarning() {
+		return getWarningText(emailWarning);
+
+	}
+
+	public String retrievepasswordWarning() {
+		return getWarningText(passwordWarning);
+	}
+
+	public String retrieveEmailPasswordNotMatchingWarningMessageText() {
+
+		String warningText = emailPasswordNotMatchingWarning.getText();
+		return warningText;
+
+	}
 
 	public void emailAddressField(String emailText) {
 		emailAddressField.sendKeys(emailText);
@@ -53,34 +90,11 @@ public class LoginPage {
 
 	}
 
-	public String retrieveEmailWarning() {
-		String emaiWarningText = emailWarning.getText();
-		return emaiWarningText;
-	}
-
-	public String retrievepasswordWarning() {
-		String passwordWarningText = passwordWarning.getText();
-		return passwordWarningText;
-	}
-
-	public String retrieveEmailPasswordNotMatchingWarningMessageText() {
-
-		String warningText = emailPasswordNotMatchingWarning.getText();
-		return warningText;
-
-	}
-
 	public LoginPage clickOnLoginButton() {
 		loginButton.click();
 		return new LoginPage(driver);
 	}
 
-	/*
-	 * public LoginPage login(String emailText, String passwordText) {
-	 * emailAddressField.sendKeys(emailText); 
-	 * passwordField.sendKeys(passwordText);
-	 * loginButton.click(); return new LoginPage(driver); }
-	 */
 	public QuotationPage navigateQuotationPage() {
 		clickOnOrdersManu.click();
 		return new QuotationPage(driver);

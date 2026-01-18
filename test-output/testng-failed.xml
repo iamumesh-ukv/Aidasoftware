@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.aidasoftware.qa.testcases.POSSalesOrderTest">
+      <class name="com.aidasoftware.qa.testcases.LoginTest">
         <methods>
-          <include name="createSalesOrderTestWithMandatoryFields"/>
+          <include name="tearDown"/>
+          <include name="verifyLoginWithoutProvidingCredentials"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- com.aidasoftware.qa.testcases.POSSalesOrderTest -->
+      </class> <!-- com.aidasoftware.qa.testcases.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

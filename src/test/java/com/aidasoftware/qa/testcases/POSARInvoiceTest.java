@@ -31,6 +31,7 @@ public class POSARInvoiceTest extends BaseClass {
 		posARInvoicePage.selectCashAccount("10000-Petty Cash-Corporate-Portland-Corporate-Corporate");
 		posARInvoicePage.openPaymentDropdown();
 		posARInvoicePage.selectPaymentByType("Cash");
+		posARInvoicePage.enterAmount();
 
 	}
 
