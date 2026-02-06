@@ -31,7 +31,7 @@ public class QuotationPage {
 	@FindBy(xpath = "//span[@id='select2-ddlFP-container']")
 	WebElement clickOnFloorPlanDrowpdown;
 
-	@FindBy(xpath = "//ul[@id='select2-ddlFP-results']//li")
+	@FindBy(xpath = "//ul[@class='select2-results__options']//li")
 	List<WebElement> floorPlanList;
 
 	@FindBy(xpath = "//input[@id='txtBuildingNo']")
@@ -134,35 +134,51 @@ public class QuotationPage {
 	}
 
 //	public void selectFloorPlan(String floorPlanName) {
-//		{
-//			wait.until(ExpectedConditions.visibilityOfAllElements(floorPlanList));
-//			for (WebElement plan : floorPlanList) {
-//				if (plan.getText().trim().equalsIgnoreCase(floorPlanName)) {
-//					plan.click();
-//					break;
-//				}
-//			}
-//		}
+//
+//	    // 1. Open Select2 dropdown
+//	    wait.until(ExpectedConditions.elementToBeClickable(clickOnFloorPlanDrowpdown)).click();
+//
+//	    // 2. Wait for at least ONE visible option
+//	    By optionLocator = By.xpath(
+//	        "//li[contains(@class,'select2-results__option') and @aria-selected='false']"
+//	    );
+//
+//	    wait.until(ExpectedConditions.presenceOfElementLocated(optionLocator));
+//
+//	    // 3. Fetch options AFTER dropdown opens
+//	    List<WebElement> options = driver.findElements(optionLocator);
+//
+//	    for (WebElement option : options) {
+//
+//	        if (!option.isDisplayed()) {
+//	            continue;
+//	        }
+//
+//	        String actualText = option.getText().replace("\n", " ").trim();
+//
+//	        System.out.println("Found option: [" + actualText + "]");
+//
+//	        if (actualText.equalsIgnoreCase(floorPlanName)) {
+//	            option.click();   // IMPORTANT: normal click
+//	            return;
+//	        }
+//	    }
+//
+//	    throw new RuntimeException("Floor plan not found: " + floorPlanName);
 //	}
 
 	public void selectFloorPlan(String floorPlanName) {
-
-	    // 1. Open dropdown
-	 //  wait.until(ExpectedConditions.elementToBeClickable(clickOnFloorPlanDrowpdown)).click();
-
-	    // 2. Wait until options are visible
-	    wait.until(ExpectedConditions.visibilityOfAllElements(floorPlanList));
-
-	    // 3. Select required option
-	    for (WebElement plan : floorPlanList) {
-	        if (plan.getText().trim().equalsIgnoreCase(floorPlanName)) {
-
-	            // JS click for Select2 reliability
-	            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", plan);
-	            break;
-	        }
-	    }
+		wait.until(ExpectedConditions.visibilityOfAllElements(floorPlanList));
+		for(WebElement selectPlan : floorPlanList )
+		{ 
+			if(selectPlan.getText().trim().equalsIgnoreCase(floorPlanName))
+			{
+				selectPlan.click();
+			}
+		}
+		
 	}
+
 	// ---------- Building & Unit ----------
 	public void enterBuildingNumber(String buildingNo) {
 		buildingNumberField.sendKeys(buildingNo);
@@ -198,7 +214,7 @@ public class QuotationPage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		// Wait until calendar is visible
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='xdsoft_calendar']")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='xdsoft_calendar']")));
 
 		// Loop until desired month and year appear
 		while (true) {
@@ -291,7 +307,7 @@ public class QuotationPage {
 //		clickOnSaveButtonToSaveQuote.click();
 //	}
 
-	public void clickSubmitAndGenerateOrder() {
+	public void clickSubmitAndGenerateSalesOrder() {
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnSubmitAndGenerateSalesOrderButton)).click();
 		// clickOnSubmitAndGenerateSalesOrderButton.click();
 	}
