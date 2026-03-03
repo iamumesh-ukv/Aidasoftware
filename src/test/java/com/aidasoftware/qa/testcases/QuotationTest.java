@@ -41,16 +41,17 @@ public class QuotationTest extends BaseClass {
 
 		// Select customer
 		quotationPage.openCustomerDropdown();
-		quotationPage.selectCustomerByName("AMAN");
+		quotationPage.selectCustomerByName("ADAM");
 		// Select floor plan
 		quotationPage.openFloorPlanDropdown();
-		quotationPage.selectFloorPlan("Ground Floor");
+		quotationPage.selectFloorPlanFromFloorPlanDropdown("Ground-floor");
 		
 		quotationPage.enterBuildingNumber("9889");
 		quotationPage.enterUnitNumber("A-101");
 
 		// Select Sales Type
 		quotationPage.selectSalesTypeByVisibleText("Regular");
+		quotationPage.clickOnInstallationDateCalendar();
 		quotationPage.selectInstallationDate("25", "March", "2026");
 
 		// Add Item
@@ -65,6 +66,10 @@ public class QuotationTest extends BaseClass {
 
 		quotationPage.enterUnitCost("3.50");
 		quotationPage.enterUnitPrice("6.50");
+		quotationPage.clickOnSaveLineItem();
+		quotationPage.clickOnSaveQuote();
+		//quotationPage.clickSubmitAndGenerateSalesOrder();
+		
 
 	}
 }

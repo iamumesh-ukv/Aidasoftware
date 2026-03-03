@@ -28,7 +28,7 @@ public class QuotationPage {
 	@FindBy(xpath = "//ul[@id='select2-ddlCustomerID-results']//li")
 	List<WebElement> customerList;
 
-	@FindBy(xpath = "//span[@id='select2-ddlFP-container']")
+	@FindBy(xpath = "//span[@aria-labelledby='select2-ddlFP-container']")
 	WebElement clickOnFloorPlanDrowpdown;
 
 	@FindBy(xpath = "//ul[@class='select2-results__options']//li")
@@ -46,6 +46,9 @@ public class QuotationPage {
 	@FindBy(xpath = "//select[@id='Item1_SalesTypeID']//option")
 	List<WebElement> salesTypeOptions;
 
+	// Objects for date picker
+	@FindBy(xpath = "//input[@id='txtInstallationDate']")
+	WebElement clickOnInstallationDate;
 	// Objects for date picker
 	@FindBy(xpath = "//input[@id='txtInstallationDate']")
 	WebElement selectInstallationDate;
@@ -130,54 +133,90 @@ public class QuotationPage {
 
 	// ---------- Floor Plan ----------
 	public void openFloorPlanDropdown() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnFloorPlanDrowpdown)).click();
 	}
-
-//	public void selectFloorPlan(String floorPlanName) {
+//	public void selectFloorPlanFromFloorPlanDropdown(String value) {
 //
-//	    // 1. Open Select2 dropdown
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//	    // Enter value in search box
+//	    WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//	            By.xpath("//input[@role='textbox']")
+//	    ));
+//	    searchBox.sendKeys(value);
+//
+//	    // Select matching option
+//	    WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+//	            By.xpath("//li[contains(text(),'" + value + "')]")
+//	    ));
+//	    option.click();
+//	}
+	public void selectFloorPlanFromFloorPlanDropdown(String value) {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+	    // Click drop-down first (VERY IMPORTANT)
+	    WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
+	            By.xpath("//span[@role='combobox']")
+	    ));
+	    dropdown.click();
+
+	    // Wait for search box to appear
+	    WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	            By.xpath("//input[@role='textbox']")
+	    ));
+
+	    // Clear properly
+	    searchBox.sendKeys(Keys.CONTROL + "a");
+	    searchBox.sendKeys(Keys.DELETE);
+
+	    // Type value
+	    searchBox.sendKeys(value);
+
+	    //  Wait until correct result is visible
+	    By resultLocator = By.xpath("//ul[contains(@class,'select2-results')]//li[normalize-space()='" + value + "']");
+
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(resultLocator));
+
+	    //  Click the option
+	    WebElement option = wait.until(ExpectedConditions.elementToBeClickable(resultLocator));
+	    option.click();
+
+	    //  Optional: wait until drop-down closes (extra stability)
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.xpath("//input[@role='textbox']")
+	    ));
+	}
+
+//	public void openFloorPlanDropdown() {
+//
+//	    // Click to focus and open drop down
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //	    wait.until(ExpectedConditions.elementToBeClickable(clickOnFloorPlanDrowpdown)).click();
 //
-//	    // 2. Wait for at least ONE visible option
-//	    By optionLocator = By.xpath(
-//	        "//li[contains(@class,'select2-results__option') and @aria-selected='false']"
-//	    );
+//	    // Small wait to allow options to load
+//	    WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+//	    wait1.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+//	          //  By.xpath("//li | //div[contains(@class,'option')]")
+//	          //
+//	    		By.xpath("//span[@id='select2-ddlFP-container']")
+//	    ));
 //
-//	    wait.until(ExpectedConditions.presenceOfElementLocated(optionLocator));
-//
-//	    // 3. Fetch options AFTER dropdown opens
-//	    List<WebElement> options = driver.findElements(optionLocator);
-//
-//	    for (WebElement option : options) {
-//
-//	        if (!option.isDisplayed()) {
-//	            continue;
-//	        }
-//
-//	        String actualText = option.getText().replace("\n", " ").trim();
-//
-//	        System.out.println("Found option: [" + actualText + "]");
-//
-//	        if (actualText.equalsIgnoreCase(floorPlanName)) {
-//	            option.click();   // IMPORTANT: normal click
-//	            return;
-//	        }
-//	    }
-//
-//	    throw new RuntimeException("Floor plan not found: " + floorPlanName);
+//	    // Select first option using keyboard
+//	    clickOnFloorPlanDrowpdown.sendKeys(Keys.ARROW_DOWN);
+//	    clickOnFloorPlanDrowpdown.sendKeys(Keys.ENTER);
 //	}
-
-	public void selectFloorPlan(String floorPlanName) {
+//
+	public void selectFloorPlanFromFlooePlanDropdown(String floorPlanName) {
 		wait.until(ExpectedConditions.visibilityOfAllElements(floorPlanList));
-		for(WebElement selectPlan : floorPlanList )
-		{ 
-			if(selectPlan.getText().trim().equalsIgnoreCase(floorPlanName))
-			{
+		for (WebElement selectPlan : floorPlanList) {
+			if (selectPlan.getText().trim().equalsIgnoreCase(floorPlanName)) {
 				selectPlan.click();
 			}
 		}
-		
+
 	}
+	
 
 	// ---------- Building & Unit ----------
 	public void enterBuildingNumber(String buildingNo) {
@@ -203,6 +242,13 @@ public class QuotationPage {
 				break;
 			}
 		}
+	}
+
+	public void clickOnInstallationDateCalendar() {
+		// clickOnInstallationDate.click();
+		// Use JSExecutor or sendKeys if needed for selecting date
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(clickOnInstallationDate)).click();
 	}
 
 	// ---------- Installation Date ----------
@@ -298,14 +344,14 @@ public class QuotationPage {
 
 	}
 
-	public void clickSave() {
+	public void clickOnSaveLineItem() {
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnSaveButton)).click();
 		// clickOnSaveButton.click();
 	}
 
-//	public void clickSaveQuote() {
-//		clickOnSaveButtonToSaveQuote.click();
-//	}
+	public void clickOnSaveQuote() {
+		clickOnSaveButtonToSaveQuote.click();
+	}
 
 	public void clickSubmitAndGenerateSalesOrder() {
 		wait.until(ExpectedConditions.elementToBeClickable(clickOnSubmitAndGenerateSalesOrderButton)).click();
